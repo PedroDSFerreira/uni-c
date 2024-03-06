@@ -1,0 +1,59 @@
+#!/usr/bin/expect -f
+set timeout -1
+
+spawn ./install.sh
+
+# Handle prompts and provide answers
+expect {
+    "<press RETURN to continue>" {
+        send "\r"
+        exp_continue
+    }
+    "Proceed with installation (y/N)?" {
+        send "y\r"
+        exp_continue
+    }
+    "Press RETURN to continue" {
+        send "\r"
+        exp_continue
+    }
+    "Install java default-jdk (Y/n)?" {
+        send "\r"
+        exp_continue
+    }
+    "password for antlr4:" {
+        send "pass\r"
+        exp_continue
+    }
+    "Do you want to continue?" {
+        send "\r"
+        exp_continue
+    }
+    "Execute phase #3 (Y/n)?" {
+        send "\r"
+        exp_continue
+    }
+    "Execute phase #4 (Y/n)?" {
+        send "\r"
+        exp_continue
+    }
+    "Execute phase #5 (Y/n)?" {
+        send "\r"
+        exp_continue
+    }
+    "Install java standard library documentation  (Y/n)?" {
+        send "\r"
+        exp_continue
+    }
+    "Execute phase #6 (Y/n)?" {
+        send "n\r"
+        exp_continue
+    }
+    "Install vim (Y/n)?" {
+        send "n\r"
+        exp_continue
+    }
+    eof {
+        exit
+    }
+}
