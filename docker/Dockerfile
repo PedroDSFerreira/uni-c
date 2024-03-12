@@ -7,6 +7,7 @@ RUN apt-get update && \
     unzip \
     build-essential \
     man-db \
+    graphviz \
     expect
 # Run unminimize to restore manpages
 RUN yes | unminimize
@@ -23,8 +24,9 @@ RUN groupadd -r antlr4 && \
     adduser antlr4 sudo && \
     mkdir -p /home/antlr4 && \
     echo 'antlr4:pass' | chpasswd
+RUN mkdir -p /bin/classes
 # Give appropriate permissions
-RUN chown -R antlr4:antlr4 /home/antlr4 /tmp /tmp/antlr4-install
+RUN chown -R antlr4:antlr4 /home/antlr4 /tmp /tmp/antlr4-install /bin/classes
 # Change ownership of the extracted folder to the newly created user
 USER antlr4
 # Set working directory to the extracted folder
@@ -36,6 +38,9 @@ RUN ./expect_script.exp
 # Set environment variables
 ENV CLASSPATH=".:/usr/local/lib/antlr-4.13.1-complete.jar:/usr/local/lib/ST-4.3.4.jar"
 ENV ANTLR4_PATH="/usr/local/lib"
+
+COPY classes/Main.java classes/MyCustomListener.java /tmp/antlr4-install/
+RUN javac -d /bin/classes /tmp/antlr4-install/Main.java /tmp/antlr4-install/MyCustomListener.java
 
 # Clean up temporary directory
 RUN rm -rf /tmp/antlr4-install
