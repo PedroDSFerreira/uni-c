@@ -2,18 +2,17 @@ import java.lang.reflect.Constructor;
 import org.antlr.v4.runtime.*;
 import org.antlr.v4.runtime.tree.*;
 
-public class Main {
+public class TerminalAST {
   public static void main(String[] args) throws Exception {
     if (args.length < 2) {
-      System.err.println("Usage: Main <grammar-file> <input-file>");
+      System.err.println("Usage: Main <grammar-name> <input-file>");
       System.exit(1);
     }
 
-    String grammarFile = args[0];
+    String grammarName = args[0];
     String inputFile = args[1];
 
     // Construct lexer, parser, and base listener class names dynamically
-    String grammarName = grammarFile.substring(0, grammarFile.lastIndexOf('.'));
     String lexerClassName = grammarName + "Lexer";
     String parserClassName = grammarName + "Parser";
     String baseListenerClassName = grammarName + "BaseListener";
@@ -41,9 +40,9 @@ public class Main {
 
     // Load base listener class dynamically
     // Class<?> baseListenerClass = Class.forName(baseListenerClassName);
-    // Constructor<?> baseListenerConstructor = baseListenerClass.getConstructor();
-    // MyCustomListener listener =
-        // (MyCustomListener)baseListenerConstructor.newInstance();
+    // Constructor<?> baseListenerConstructor =
+    // baseListenerClass.getConstructor(); MyCustomListener listener =
+    // (MyCustomListener)baseListenerConstructor.newInstance();
     MyCustomListener listener = new MyCustomListener();
 
     // Create a custom listener and visit the parse tree

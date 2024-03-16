@@ -40,8 +40,8 @@ RUN ./expect_script.exp
 ENV CLASSPATH=".:/usr/local/lib/antlr-4.13.1-complete.jar:/usr/local/lib/ST-4.3.4.jar"
 ENV ANTLR4_PATH="/usr/local/lib"
 
-COPY classes/Main.java classes/MyCustomListener.java /tmp/antlr4-install/
-RUN javac -d /bin/classes /tmp/antlr4-install/Main.java /tmp/antlr4-install/MyCustomListener.java
+COPY classes/TerminalAST.java classes/MyCustomListener.java /tmp/antlr4-install/
+RUN javac -d /bin/classes /tmp/antlr4-install/TerminalAST.java /tmp/antlr4-install/MyCustomListener.java
 
 # Clean up temporary directory
 RUN rm -rf /tmp/antlr4-install
