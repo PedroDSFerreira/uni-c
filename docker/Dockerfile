@@ -3,6 +3,7 @@ FROM eclipse-temurin:11-jre
 RUN apt-get update && \
     apt-get install -y \
     gawk \
+    bc \
     sudo \
     unzip \
     build-essential \

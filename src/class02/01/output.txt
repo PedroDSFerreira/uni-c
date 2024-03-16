@@ -1,0 +1,5 @@
+Olá [computers]
+Olá [teacher]
+Olá [robot]
+Adeus [human]
+
