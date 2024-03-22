@@ -39,6 +39,7 @@ public class Interpreter extends SuffixCalculatorBaseVisitor<Double> {
       res = n1 / n2;
       break;
     }
+
     return res;
   }
 }
