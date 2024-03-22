@@ -40,11 +40,11 @@ docker run --rm -u $(id -u ${USER}):$(id -g ${USER}) -v `pwd`:/workspace antlr4 
 
 ## Custom Scripts
 
-### antlr4-test [<grammar> <rule>] [options]
+### antlr4-test ["grammar" "rule"] [options]
 
-Tests the ANTLR4 <grammar> starting at rule <rule>. Arguments <grammar> <rule> may be omitted if there is only one grammar in the directory (and eventual subdirectories), and the first symbol in the grammar is the desired <rule> symbol.
+Tests the ANTLR4 "grammar" starting at rule "rule". Arguments "grammar" "rule" may be omitted if there is only one grammar in the directory (and eventual subdirectories), and the first symbol in the grammar is the desired "rule" symbol.
 
-#### Principal Options:
+#### Options:
 - `-h`, `-help`: Display help page.
 - `-gui`: Show the syntax tree.
 - `-tokens`: Show the tokens.
@@ -53,31 +53,35 @@ Tests the ANTLR4 <grammar> starting at rule <rule>. Arguments <grammar> <rule> m
 
 Cleans automatically generated ANTLR4 files considering the target language.
 
+### antlr4-tree "grammar" "input"
+
+Creates an abstract syntax tree from the input using the grammar.
+
 #### Target Language:
 - `-java`: Java (default).
 - `-cpp`: C++.
 - `-python`: Python3.
 
-### antlr4-main [options] [<GrammarName> <mainRule>]
+### antlr4-main [options] ["GrammarName" "mainRule"]
 
-Creates a main class in the target language to parse <GrammarName> starting at rule <mainRule>. Arguments <GrammarName> <mainRule> may be omitted if there is only one grammar in the directory (and eventual subdirectories), and the first symbol in the grammar is the <mainRule> symbol.
+Creates a main class in the target language to parse "GrammarName" starting at rule "mainRule". Arguments "GrammarName" "mainRule" may be omitted if there is only one grammar in the directory (and eventual subdirectories), and the first symbol in the grammar is the "mainRule" symbol.
 
 #### Target Language Options:
 - `-java`: Java (default).
 - `-cpp`: C++.
 - `-python`: Python3.
 
-#### Other Options:
-- `-l <ListenerFile>`, `-listener <ListenerFile>`: Main created with support for traversing the given listener class.
-- `-v <VisitorFile>`, `-visitor <VisitorFile>`: Main created with support for visiting the given visitor class.
+#### Options:
+- `-l "ListenerFile"`, `-listener "ListenerFile"`: Main created with support for traversing the given listener class.
+- `-v "VisitorFile"`, `-visitor "VisitorFile"`: Main created with support for visiting the given visitor class.
 - `-i`, `-line-interactive`: Main created for a line interactive interpreter.
-- `-is <Separator>`, `-separator-interactive <Separator>`: Main created for a text separated interactive parser.
-- `-indent <N>`: Number of indentation spaces (default: 3).
+- `-is "Separator"`, `-separator-interactive "Separator"`: Main created for a text separated interactive parser.
+- `-indent "N"`: Number of indentation spaces (default: 3).
 - `-f`, `-force`: Force creation of the main file even if grammar, rule, listeners, and visitors don't exist, or if the main file already exists.
 
-### antlr4-visitor [-h | -help] [-cpp [inline] | -python | -java] [-f | -force] [<grammar>] <visitor-class-name> <visitor-type>
+### antlr4-visitor [-h | -help] [-cpp [inline] | -python | -java] [-f | -force] ["grammar"] "visitor-class-name" "visitor-type"
 
-Creates a visitor class named <visitor-class-name> in the target language for <grammar>. Type instance of base generic visitor class will be <visitor-type>. Argument <grammar> may be omitted if there is only one grammar in the directory (and eventual subdirectories).
+Creates a visitor class named "visitor-class-name" in the target language for "grammar". Type instance of base generic visitor class will be "visitor-type". Argument "grammar" may be omitted if there is only one grammar in the directory (and eventual subdirectories).
 
 #### Target Language:
 - `-java`: Java (default).
@@ -87,12 +91,12 @@ Creates a visitor class named <visitor-class-name> in the target language for <g
 
 #### Options:
 - `-f`, `-force`: Force creation of the visitor file.
-- `-i <N>`, `-indent <N>`: Number of indentation spaces (default: 3).
+- `-i "N"`, `-indent "N"`: Number of indentation spaces (default: 3).
 - `-l`, `-log`: Add method log stdout print.
 
-### antlr4-listener [-h | -help] [-cpp [inline] | -python | -java] [-f | -force] [<grammar>] <listener-class-name>
+### antlr4-listener [-h | -help] [-cpp [inline] | -python | -java] [-f | -force] ["grammar"] "listener-class-name"
 
-Creates a listener class named <listener-class-name> in the target language for <grammar>. Argument <grammar> may be omitted if there is only one grammar in the directory (and eventual subdirectories).
+Creates a listener class named "listener-class-name" in the target language for "grammar". Argument "grammar" may be omitted if there is only one grammar in the directory (and eventual subdirectories).
 
 #### Target Language:
 - `-java`: Java (default).
@@ -102,7 +106,7 @@ Creates a listener class named <listener-class-name> in the target language for 
 
 #### Options:
 - `-f`, `-force`: Force creation of the listener file.
-- `-i <N>`, `-indent <N>`: Number of indentation spaces (default: 3).
+- `-i "N"`, `-indent "N"`: Number of indentation spaces (default: 3).
 - `-l`, `-log`: Add method log stdout print.
 
 ### antlr4-build [-h | -help | -cpp | -python | -java] [grammar]
