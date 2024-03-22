@@ -25,21 +25,19 @@ public class Interpreter extends SuffixCalculatorBaseVisitor<Double> {
     Double n2 = visit(ctx.expr(1));
     String op = ctx.op.getText();
 
-    switch(op) {
-      case "+":
-        res = n1 + n2;
-        break;
-      case "-":
-        res = n1 - n2;
-        break;
-      case "*":
-        res = n1 * n2;
-        break;
-      case "/":
-        res = n1 / n2;
-        break;
-      default:
-        throw new RuntimeException("Unknown operator: " + op);
+    switch (op) {
+    case "+":
+      res = n1 + n2;
+      break;
+    case "-":
+      res = n1 - n2;
+      break;
+    case "*":
+      res = n1 * n2;
+      break;
+    case "/":
+      res = n1 / n2;
+      break;
     }
     return res;
   }
