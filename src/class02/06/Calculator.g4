@@ -2,8 +2,7 @@ grammar Calculator;
 program:
     stat* EOF;
 stat:
-    expr? NEWLINE
-    | assignment? NEWLINE;
+    (expr|assignment)? NEWLINE;
 assignment: ID '=' expr;
 expr :
     expr op=('*'|'/'|'%') expr  #ExprOp
